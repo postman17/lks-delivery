@@ -1,6 +1,3 @@
-
-
-
 class StreetToPostalIndex(CustomParser):
     def _send_request(self, city, street):
         return requests.get(POST_API_RU_URL.format(city, street, POST_API_RU_APIKEY))

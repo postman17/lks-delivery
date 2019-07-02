@@ -8,14 +8,11 @@ POSTPRICE_RU_VAT = 1  #  НДС 20% (1 — с НДС, 0 — без НДС)
 
 
 ### django
-APPLLICATIONS_APPS = [
-	'src.parsers.echo',
-	'src.parsers.poscha'
-]
+# APPLLICATIONS_APPS = [
+# 	'src.parsers.echo',
+# 	'src.parsers.poscha'
+# ]
 
-		# {
-		# "pocha" : '23423',
-		# }
 
 # Написать эхо flask 
 # оптипизировать Dockerfile
