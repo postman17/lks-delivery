@@ -1,9 +1,9 @@
+import requests
 
 
-class CostCalculation(CustomParser):
-	
-    def _send_request(self, index_from, index_to):
-        return requests.get(POSTPRICE_RU_URL.format(index_from, index_to, POSTPRICE_RU_MASS, POSTPRICE_RU_VALUATION, POSTPRICE_RU_VAT))
+class CostCalculation:
+    def _send_request(self, url, index_from, index_to, mass, val, vat):
+        return requests.get(url.format(index_from, index_to, mass, val, vat))
 
     def _parse_response(self, response):
         response = response.json()
@@ -12,7 +12,7 @@ class CostCalculation(CustomParser):
         return
 
     @staticmethod
-    def get_price(index_from, index_to):
-        request = CostCalculation()._send_request(index_from, index_to)
+    def get_price(url, index_from, index_to, mass, val, vat):
+        request = CostCalculation()._send_request(url, index_from, index_to, mass, val, vat)
         response = CostCalculation()._parse_response(request)
-        return Response(response) if response else Response('not found')
+        return response if response else 'not found'

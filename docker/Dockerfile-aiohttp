@@ -1,8 +1,7 @@
 FROM python:3.7-alpine
 WORKDIR /app
-RUN apk add --no-cache bash git
 ADD ./requirements.txt /app
-RUN pip install -r requirements.txt
+RUN apk add --no-cache bash git && pip install -r requirements.txt
 COPY src /app/src
 ADD app-aiohttp.py /app
-CMD ["gunicorn", "-b", "0.0.0.0:5432", "app-aiohttp:app", "--worker-class", "aiohttp.GunicornWebWorker"]
+CMD ["gunicorn", "-b", "0.0.0.0:5442", "app-aiohttp:app", "--worker-class", "aiohttp.GunicornWebWorker"]

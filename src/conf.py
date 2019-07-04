@@ -23,6 +23,6 @@ POSTPRICE_RU_VAT = 1  #  НДС 20% (1 — с НДС, 0 — без НДС)
 # test на эхо
  
 
-# V response json -> {"pocha" : '23423',}
+# V response json -> {"pochta" : '23423',}
 # V  def parss APPLLICATIONS_APPS  -> path -> (see django) -> 
 # V (from, to) -> aapi 
