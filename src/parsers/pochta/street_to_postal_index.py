@@ -1,7 +1,5 @@
 import requests
 
-# from ...base import BaseParser
-
 
 class StreetToPostalIndex:
     def _send_request(self, url, api_key, city, street):
