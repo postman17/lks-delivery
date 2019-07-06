@@ -1,7 +1,6 @@
 import json
 
-from flask import Flask, request
-from flask import Response
+from flask import Flask, request, Response
 
 from src.parsers.pochta.main import MailParser
 

@@ -7,17 +7,17 @@ from ...conf import (
 
 
 class MailParser:
-    def _street_to_index(self, city, street):
+    def _street_to_index(self, city: str, street: str):
         return StreetToPostalIndex.get_index(
             POST_API_RU_URL, POST_API_RU_APIKEY, city, street)
 
-    def _cost_calculation(self, index_from, index_to):
+    def _cost_calculation(self, index_from: int, index_to: int):
         return CostCalculation.get_price(
             POSTPRICE_RU_URL, index_from, index_to, POSTPRICE_RU_MASS,
             POSTPRICE_RU_VALUATION, POSTPRICE_RU_VAT)
 
     @staticmethod
-    def get_price(from_city, from_street, to_city, to_street):
+    def get_price(from_city: str, from_street: str, to_city: str, to_street: str):
         index_from = MailParser()._street_to_index(from_city, from_street)
         index_to = MailParser()._street_to_index(to_city, to_street)
         cost = MailParser()._cost_calculation(index_from, index_to)

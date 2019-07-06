@@ -2,7 +2,7 @@ import requests
 
 
 class CostCalculation:
-    def _send_request(self, url, index_from, index_to, mass, val, vat):
+    def _send_request(self, url: str, index_from: int, index_to: int, mass: int, val: int, vat: int):
         return requests.get(url.format(index_from, index_to, mass, val, vat))
 
     def _parse_response(self, response):
@@ -12,7 +12,7 @@ class CostCalculation:
         return
 
     @staticmethod
-    def get_price(url, index_from, index_to, mass, val, vat):
+    def get_price(url: str, index_from: int, index_to: int, mass: int, val: int, vat: int):
         request = CostCalculation()._send_request(url, index_from, index_to, mass, val, vat)
         response = CostCalculation()._parse_response(request)
         return response if response else 'not found'

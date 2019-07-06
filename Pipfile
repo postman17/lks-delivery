@@ -25,6 +25,7 @@ MarkupSafe = "==1.1.1"
 Werkzeug = "==0.15.4"
 async_timeout = "==3.0.1"
 idna_ssl = "==1.1.0"
+mypy = "*"
 
 [requires]
 python_version = "3.7"
