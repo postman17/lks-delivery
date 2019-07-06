@@ -15,7 +15,7 @@ class StreetToPostalIndex:
             return response['content'][0]['indexes'][1]
 
     @staticmethod
-    def get_index(url: str, api_key: str, city: str, street: str):
+    def get_index(url: str, api_key: str, city: str, street: str) -> int:
         request = StreetToPostalIndex()._send_request(url, api_key, city, street)
         response = StreetToPostalIndex()._parse_response(request)
-        return response if response else 'not found'
+        return response

@@ -12,7 +12,7 @@ class CostCalculation:
         return
 
     @staticmethod
-    def get_price(url: str, index_from: int, index_to: int, mass: int, val: int, vat: int):
+    def get_price(url: str, index_from: int, index_to: int, mass: int, val: int, vat: int) -> float:
         request = CostCalculation()._send_request(url, index_from, index_to, mass, val, vat)
         response = CostCalculation()._parse_response(request)
-        return response if response else 'not found'
+        return response
