@@ -1,12 +1,7 @@
-import requests
-
 from .base_parser import BaseParser
 
 
 class CostCalculation(BaseParser):
-    # def send_request(self, url: str, index_from: int, index_to: int, mass: int, val: int, vat: int):
-    #     return requests.get(url.format(index_from, index_to, mass, val, vat))
-
     def parse(self, response):
         response = response.json()
         if response:
