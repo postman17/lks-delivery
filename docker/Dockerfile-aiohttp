@@ -1,8 +1,0 @@
-FROM python:3.7-alpine
-WORKDIR /app
-COPY Pipfile ./
-COPY Pipfile.lock ./
-RUN apk add --no-cache bash git && pip3 install pipenv && set -ex && pipenv install --system
-COPY src /app/src
-ADD app-aiohttp.py /app
-CMD ["gunicorn", "-b", "0.0.0.0:5442", "app-aiohttp:app", "--worker-class", "aiohttp.GunicornWebWorker"]

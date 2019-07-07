@@ -1,20 +1,11 @@
 version: '2'
 
 services:
-  flask:
-    restart: always
-    build:
-      context: .
-      dockerfile: docker/Dockerfile-flask
-    container_name: delivery
-    ports:
-      - "5441:5441"
-
   aiohttp:
     restart: always
     build:
       context: .
-      dockerfile: docker/Dockerfile-aiohttp
+      dockerfile: docker/Dockerfile
     container_name: delivery-aiohttp
     ports:
       - "5442:8080"

@@ -1,35 +1,28 @@
-import json
-
-from flask import Flask, request, Response
+from aiohttp import web
 
 from src.parsers.pochta.main import MailParser
 
-app = Flask(__name__)
+routes = web.RouteTableDef()
 
 
-@app.route('/pochta')
-def main():
-    from_city = request.args.get('from_city')
-    from_street = request.args.get('from_street')
-    to_city = request.args.get('to_city')
-    to_street = request.args.get('to_street')
+@routes.get('/pochta')
+async def pochta(request):
+    from_city = request.rel_url.query['from_city']
+    from_street = request.rel_url.query['from_street']
+    to_city = request.rel_url.query['to_city']
+    to_street = request.rel_url.query['to_street']
     cost = MailParser.get_price(from_city, from_street, to_city, to_street)
+    return web.json_response(cost)
+# /pochta?from_city=москва&from_street=алтуфьевское&to_city=уфа&to_street=парковая
+
+@routes.get('/echo')
+async def hello(request):
     data = {
-        'pochta': cost}
-    js = json.dumps(data)
-    response = Response(js, status=200, mimetype='application/json')
-    return response
-# pochta?from_city=москва&from_street=алтуфьевское&to_city=уфа&to_street=парковая
+        'Example': 'Echo Request'
+    }
+    return web.json_response(data)
 
 
-@app.route('/echo')
-def echo():
-    data = {
-        'Example': 'Echo Request'}
-    js = json.dumps(data)
-    response = Response(js, status=200, mimetype='application/json')
-    return response
-
-
-if __name__ == "__main__":
-    app.run()
+app = web.Application()
+app.add_routes(routes)
+web.run_app(app)
