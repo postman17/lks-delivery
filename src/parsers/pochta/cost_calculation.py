@@ -10,7 +10,7 @@ class CostCalculation(BaseParser):
     def parse(self, response):
         response = response.json()
         if response:
-            return response['pkg']
+            return response.get('pkg')
         return
 
     @staticmethod
