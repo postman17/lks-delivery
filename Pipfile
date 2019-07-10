@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 mypy = "==0.711"
 pytest-aiohttp = "==0.3.0"
+flake8 = "==3.7.7"
 
 [packages]
 aiohttp = "==3.5.4"

@@ -9,9 +9,7 @@ class CostCalculation(BaseParser):
         return
 
     @staticmethod
-    def output(attrs: dict, index_from: int, index_to: int) -> dict:
-        attrs['index_from'] = index_from
-        attrs['index_to'] = index_to
+    def output(attrs: dict) -> dict:
         request = CostCalculation().send_request(attrs)
         response = CostCalculation().parse(request)
         return {

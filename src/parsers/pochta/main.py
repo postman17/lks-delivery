@@ -1,7 +1,7 @@
 from .cost_calculation import CostCalculation
 from .street_to_postal_index import StreetToPostalIndex
 
-from .. import POST_API_RU, POSTPRICE_RU
+from . import POST_API_RU, POSTPRICE_RU
 
 
 class MailParser:  # TODO road to component
@@ -11,9 +11,9 @@ class MailParser:  # TODO road to component
         )
 
     def cost_calculation(self, index_from: int, index_to: int):
-        return CostCalculation.output(
-            POSTPRICE_RU, index_from, index_to
-        )
+        POSTPRICE_RU['index_from'] = index_from
+        POSTPRICE_RU['index_to'] = index_to
+        return CostCalculation.output(POSTPRICE_RU)
 
     @staticmethod
     def get_price(from_city: str, from_street: str, to_city: str, to_street: str):

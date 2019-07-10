@@ -9,3 +9,17 @@ services:
     container_name: delivery-aiohttp
     ports:
       - "5442:8080"
+
+  vault:
+    image: vault:latest
+    volumes:
+      - ./vault/config:/vault/config
+      - ./vault/policies:/vault/policies
+      - ./vault/file:/vault/file
+    ports:
+      - 8200:8200
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+    cap_add:
+      - IPC_LOCK
+    command: vault server -config=/vault/config/vault.json

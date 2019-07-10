@@ -1,8 +1,8 @@
 FROM python:3.7-alpine
-COPY Pipfile Pipfile.lock ./
+WORKDIR /
+COPY Pipfile Pipfile.lock docker/entrypoint.sh ./
 RUN pip install pipenv && pipenv install --system
-COPY src /src
-COPY app.py docker/entrypoint.sh /
-RUN chmod +x /entrypoint.sh
+COPY src ./app/src/
+COPY app.py ./app/
 ENTRYPOINT ["sh", "/entrypoint.sh"]
 

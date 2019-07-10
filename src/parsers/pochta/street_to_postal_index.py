@@ -18,5 +18,3 @@ class StreetToPostalIndex(BaseParser):
         request = StreetToPostalIndex().send_request(attrs)
         response = StreetToPostalIndex().parse(request)
         return response
-
-
