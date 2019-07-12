@@ -4,7 +4,7 @@ from .base_parser import BaseParser
 class StreetToPostalIndex(BaseParser):
     def parse(self, response):
         response = response.json()
-        if not response['content']:
+        if not response.get('content'):
             return
         elif response['content'][0]['indexes'][0]:
             return response['content'][0]['indexes'][0]
