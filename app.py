@@ -13,7 +13,6 @@ async def pochta(request):
     to_street = request.rel_url.query.get('to_street')
     cost = MailParser.get_price(from_city, from_street, to_city, to_street)
     return web.json_response(cost)
-# /pochta?from_city=москва&from_street=алтуфьевское&to_city=уфа&to_street=парковая
 
 
 @routes.get('/echo')
