@@ -1,7 +1,7 @@
 from .cost_calculation import CostCalculation
 from .street_to_postal_index import StreetToPostalIndex
 
-from . import POST_API_RU, POSTPRICE_RU
+from src.conf import POST_API_RU, POSTPRICE_RU
 
 
 class MailParser:  # TODO road to component
